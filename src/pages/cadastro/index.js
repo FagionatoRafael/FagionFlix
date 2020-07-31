@@ -33,7 +33,7 @@ function CadastroCategoria() {
     useEffect(() => {
         const URL = window.location.hostname.includes('localhost')
         ? 'http://localhost:8080/categorias'
-        : 'https://gilberto-sassi.herokuapp.com/categorias';
+        : 'https://fagion.herokuapp.com/categorias';
   
         fetch(URL)
         .then( async (respostaServidor) => {
