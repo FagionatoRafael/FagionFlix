@@ -31,7 +31,8 @@ function CadastroCategoria() {
     }
 
     useEffect(() => {
-        const URL = 'http://localhost:8080/categorias';
+        let urls = 'http://localhost:8080/categorias' || 'https://gilberto-sassi.herokuapp.com/categorias';
+        const URL = urls ? 'http://localhost:8080/categorias' : 'https://gilberto-sassi.herokuapp.com/categorias';
         fetch(URL)
         .then( async (respostaServidor) => {
             const resposta = await respostaServidor.json();
