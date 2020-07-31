@@ -4,15 +4,7 @@ import PageDefault from '../../componentes/pageDefault';
 import FormField from '../../componentes/FormField';
 import Button from '../../componentes/Button';
 
-function CadastroCategoria() {
-    
-    const valoresIniciais = {
-        nome: '',
-        descricao: '',
-        cor: ''
-    };
-
-    const [categorias, setCategorias] = useState([]);
+function useForm(valoresIniciais) {
     const [values, setValues] = useState(valoresIniciais);
 
     function setValue(chave, valor) {
@@ -29,6 +21,29 @@ function CadastroCategoria() {
             event.target.value
         );
     }
+
+    function clearForm() {
+        setValues(valoresIniciais);
+    }
+
+    return {
+        values,
+        handleChange,
+        clearForm
+    }
+}
+
+function CadastroCategoria() {
+    
+    const valoresIniciais = {
+        nome: '',
+        descricao: '',
+        cor: ''
+    };
+
+    const { handleChange, values, clearForm } = useForm(valoresIniciais);
+
+    const [categorias, setCategorias] = useState([]);
 
     useEffect(() => {
         const URL = window.location.hostname.includes('localhost')
@@ -52,7 +67,7 @@ function CadastroCategoria() {
                     values
                 ]);
 
-                setValues(valoresIniciais);
+                clearForm();
             }}>
                 <FormField label='Nome Da Categoria' type='text' name='nome' value={values.nome} onChange={handleChange}/>
                 
