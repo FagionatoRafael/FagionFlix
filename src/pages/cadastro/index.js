@@ -3,35 +3,7 @@ import { Link } from 'react-router-dom';
 import PageDefault from '../../componentes/pageDefault';
 import FormField from '../../componentes/FormField';
 import Button from '../../componentes/Button';
-
-function useForm(valoresIniciais) {
-    const [values, setValues] = useState(valoresIniciais);
-
-    function setValue(chave, valor) {
-        setValues({
-            ...values,
-            [chave]: valor
-        });
-    }
-
-    function handleChange(event) {
-
-        setValue(
-            event.target.getAttribute('name'),
-            event.target.value
-        );
-    }
-
-    function clearForm() {
-        setValues(valoresIniciais);
-    }
-
-    return {
-        values,
-        handleChange,
-        clearForm
-    }
-}
+import useForm from '../../hoocks/useForm';
 
 function CadastroCategoria() {
     
@@ -49,13 +21,18 @@ function CadastroCategoria() {
         const URL = window.location.hostname.includes('localhost')
         ? 'http://localhost:8080/categorias'
         : 'https://fagion.herokuapp.com/categorias';
-  
+        
         fetch(URL)
-        .then( async (respostaServidor) => {
-            const resposta = await respostaServidor.json();
-            setCategorias([...resposta,]);
+        .then(async (response) => {
+            if (response.ok) {
+                const result = await response.json();
+                setCategorias(result);
+                return;
+            }
+            throw new Error('Não foi possível pegar os dados');
         });
-    });
+    }, []);
+        
 
     return (
         <PageDefault>
