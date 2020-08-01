@@ -10,7 +10,9 @@ import categoriasRepository from '../../../repositories/categorias';
 function CadastroVideo() {
   const history = useHistory();
   const [categorias, setCategorias] = useState([]);
-  const categoryTitles = categorias.map(({ titulo }) => titulo);
+
+  const categoryTitles = categorias.map(({ nome }) => nome);
+
   const { handleChange, values } = useForm({
     titulo: 'Video padrão',
     url: 'https://www.youtube.com/watch?v=jOAU81jdi-c',
@@ -53,6 +55,7 @@ function CadastroVideo() {
           name="titulo"
           value={values.titulo}
           onChange={handleChange}
+          suggestions={[]}
         />
 
         <FormField
@@ -60,6 +63,7 @@ function CadastroVideo() {
           name="url"
           value={values.url}
           onChange={handleChange}
+          suggestions={[]}
         />
 
         <FormField
