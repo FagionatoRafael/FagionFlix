@@ -4,6 +4,7 @@ import PageDefault from '../../componentes/pageDefault';
 import FormField from '../../componentes/FormField';
 import Button from '../../componentes/Button';
 import useForm from '../../hoocks/useForm';
+import Loading from '../../componentes/loading'
 
 function CadastroCategoria() {
     
@@ -21,7 +22,6 @@ function CadastroCategoria() {
         const URL = window.location.hostname.includes('localhost')
         ? 'http://localhost:8080/categorias'
         : 'https://fagion.herokuapp.com/categorias';
-        
         fetch(URL)
         .then(async (response) => {
             if (response.ok) {
@@ -56,9 +56,7 @@ function CadastroCategoria() {
             </form>
 
             {categorias.length === 0 && (
-            <div>
-                Loading...
-            </div>
+            <Loading/>
             )}
 
             <ul>

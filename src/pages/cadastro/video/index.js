@@ -11,7 +11,7 @@ function CadastroVideo() {
   const history = useHistory();
   const [categorias, setCategorias] = useState([]);
 
-  const categoryTitles = categorias.map(({ nome }) => nome);
+  let categoryTitles = categorias.map(({ nome }) => nome);
 
   const { handleChange, values } = useForm({
     titulo: 'Video padrão',
@@ -82,9 +82,10 @@ function CadastroVideo() {
       <br />
       <br />
 
-      <Link to="/cadastro/categoria">
-        Cadastrar Categoria
-      </Link>
+      <Button type="submit">
+        Cadastrar
+      </Button>
+      
     </PageDefault>
   );
 }

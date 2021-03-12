@@ -15,7 +15,7 @@ const Button = Styled.button`
     text-decoration: none;
     display: inline-block;
     transition: opacity .3s;
-    
+
     &:hover,
     &:focus {
     opacity: .5;

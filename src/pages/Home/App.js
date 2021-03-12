@@ -3,6 +3,7 @@ import BannerMain from '../../componentes/BannerMain';
 import Carousel from '../../componentes/Carousel';
 import PageDefault from '../../componentes/pageDefault';
 import categoriasRepository from '../../repositories/categorias';
+import Loading from '../../componentes/loading'
 
 function App() {
 
@@ -23,7 +24,7 @@ function App() {
   return (
     <PageDefault paddingAll={0} style={{ background: "#141414" }}>
 
-      {dadosIniciais.length === 0 && (<div>Loading...</div>)}
+      {dadosIniciais.length === 0 && (<Loading/>)}
 
       {dadosIniciais.map((categoria, indice) => {
         const descricao = "Essa é a melhor descricao do mundo!"

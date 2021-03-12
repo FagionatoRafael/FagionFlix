@@ -70,27 +70,6 @@ const Input = styled.input`
     }
 `;
 
-/*function FormField({ label ,type, name, value, onChange }) {
-    const tag = type === 'textarea' ? 'textarea' : 'input';
-
-    return(
-        <FormFieldWrapper>
-            <Label>
-            <Input 
-                as={tag}
-                type={type}
-                name={name} 
-                value={value} 
-                onChange={onChange} 
-            />
-            <Label.Text>
-                {label}
-                :
-            </Label.Text>
-            </Label>
-        </FormFieldWrapper>
-    );
-}*/
 
 function FormField({
     label, type, name, value, onChange, suggestions,
